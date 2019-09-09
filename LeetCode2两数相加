@@ -1,0 +1,22 @@
+class ListNode:
+  def __init__(self,val):
+    self.next=None
+    self.val =val
+class solution:
+  def add2number(self,l1,l2):
+    dummyHead=ListNode(0)
+    curr =dummyHead
+    tmp =0
+    while l1 or l2:
+      val1 =l1.val if l1 else 0 # 长度不等链表处理
+      val2 =l2.val if l2 else 0
+      val =(val1+val2+tmp) % 10
+      tmp =(val1+val2+tmp) // 10
+      curr.next =ListNode(val)
+      curr= curr.next
+      if l1: l1=l1.next# 长度不等链表处理
+      if l2: l2=l2.next
+    if tmp == 1:
+      curr.next=ListNode(1)#最后一个进位处理
+    return dummyHead.next
+ 
