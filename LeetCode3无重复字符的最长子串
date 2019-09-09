@@ -1,0 +1,13 @@
+class solution:
+  def helper(s):
+    i ,j=0,0
+    n =len(s)
+    dic ={}
+    ans =0
+    while j < n:#滑动窗口不断扩展
+      if s[j] in dic:
+        i =max(i,dci[s[j]]+1)#必须加上max
+      ans=max(ans,j-i+1)
+      dic[s[j]] =j
+      j += 1
+return ans
