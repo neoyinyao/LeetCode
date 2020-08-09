@@ -1,0 +1,27 @@
+"""
+bisect algorithm
+"""
+算法思路：low和high都是有可能被插入的位置，需要注意的是
+当li[mid] == x的时候，如果是insert_left，mid仍然是候选，right =mid，如果是insert_right,mid已经不是候选，mid+1才是有可能的候选
+return的是left，不是mid
+def insert_left(li, x, low=0, high=None):
+    if high is None:
+        high = len(li)
+    while low < high:
+        mid = (low + high) // 2
+        
+        if li[mid] > x: high = mid  
+        elif li[mid] == x: high = mid
+        elif li[mid] < x:low = mid + 1
+        
+        rewritten as
+        
+        if li[mid] >= x: high = mid
+        else: low = mid + 1
+     return low
+def insert_right(li, x, low, high):
+    while left < right:
+        mid = (left + right) // 2
+        if li[mid] <= x: low = mid + 1
+        else: high = mid
+   return low
